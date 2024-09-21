@@ -3,139 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Petrol Calculator</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome for icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <title>Kavin's Hall of Fame... or Shame?</title>
     <style>
         body {
-            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
         }
-        .navbar {
-            background-color: #007bff !important;
-        }
-        .navbar-brand {
-            color: #ffffff !important;
-            font-weight: bold;
-        }
-        .navbar-brand:hover {
-            color: #ffffff !important;
-        }
-        .quote {
+
+        header {
+            background-color: #ff6f61;
+            color: white;
             text-align: center;
-            margin-top: 100px;
-            margin-bottom: 50px;
+            padding: 20px;
         }
-        .quote h2 {
-            font-size: 36px;
-            font-weight: bold;
-            color: #007bff;
+
+        header img {
+            width: 150px;
+            border-radius: 50%;
         }
-        .quote p {
-            font-size: 20px;
+
+        h1 {
+            margin: 10px;
         }
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background-color: #ffffff;
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
         }
-        .card-header {
-            background-color: #007bff;
-            border-radius: 15px 15px 0 0;
-            padding: 15px;
-        }
-        .card-body {
-            padding: 30px;
-        }
-        .form-group {
+
+        .section {
+            background-color: white;
             margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
+
+        .section h2 {
+            color: #ff6f61;
+            margin-bottom: 15px;
         }
-        .btn-primary:hover {
-            background-color: #0056b3;
+
+        .joke {
+            font-size: 1.2em;
+            margin: 10px 0;
         }
-        .result {
+
+        .skills {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills li {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .meme {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .meme img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #ff6f61;
+            color: white;
+            text-align: center;
+            padding: 10px;
             margin-top: 20px;
-            font-size: 20px;
-            font-weight: bold;
+        }
+
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Petrol Calculator By Raghav</a>
-        </div>
-    </nav>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="quote">
-                    <h2>"Life is a journey, enjoy the ride!"</h2>
-                    <p>Calculate how much petrol you need for your next adventure.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card">
-                    <div class="card-header text-white">
-                        <h3 class="mb-0">Petrol Calculator</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="distance">Distance to be covered (km):</label>
-                            <div class="input-group">
-                                <input type="number" id="distance" class="form-control" required>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">km</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="mileage">Average mileage of the vehicle (km/l):</label>
-                            <div class="input-group">
-                                <input type="number" id="mileage" class="form-control" required>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">km/l</span>
-                                </div>
-                            </div>
-                        </div><script>
-    function calculatePetrol() {
-        var distance = parseFloat(document.getElementById("distance").value);
-        var mileage = parseFloat(document.getElementById("mileage").value);
-        var fuelPrice = parseFloat(document.getElementById("fuelPrice").value);
-        if (isNaN(distance) || isNaN(mileage) || isNaN(fuelPrice) || distance <= 0 || mileage <= 0 || fuelPrice <= 0) {
-            alert("Please enter valid numeric values for distance, mileage, and fuel price.");
-            return;
-        }
-        var petrolNeeded = distance / mileage;
-        var petrolCost = petrolNeeded * fuelPrice;
-        document.getElementById("result").innerHTML = "<i class='fas fa-gas-pump'></i> Petrol needed: " + petrolNeeded.toFixed(2) + " liters<br>" + "<i class='fas fa-rupee-sign'></i> Petrol cost: ₹" + petrolCost.toFixed(2);
-    }
-</script>
+<header>
+    <img src="https://via.placeholder.com/150" alt="Kavin's Cartoon">
+    <h1>Kavin's Hall of Fame... or Shame?</h1>
+    <p>Welcome to Kavin's world, where the jokes are real, but so are the laughs!</p>
+</header>
 
-                        <div class="form-group">
-                            <label for="fuelPrice">Fuel price in India (₹/liter):</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">₹</span>
-                                </div>
-                                <input type="number" id="fuelPrice" class="form-control" required>
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-block" onclick="calculatePetrol()"><i class="fas fa-calculator mr-2"></i> Calculate</button>
-                        <div class="result text-center" id="result"></div>
-                    </div>
-                </div
+<div class="container">
+
+    <!-- Section 1: Top 5 Jokes About Kavin -->
+    <div class="section">
+        <h2>Top 5 Jokes About Kavin</h2>
+        <p class="joke">1. Why does Kavin bring a ladder to school? Because he wants to go to high school! (Sorry Kavin, not that high yet!)</p>
+        <p class="joke">2. Kavin walks into a library and asks for a burger... Guess what? He still wonders why everyone stared!</p>
+        <p class="joke">3. Kavin doesn’t need Google. His friends are already giving him all the wrong answers!</p>
+        <p class="joke">4. They say practice makes perfect, but Kavin is proving them wrong... One video game at a time.</p>
+        <p class="joke">5. Kavin tried to be smart once. The WiFi went down, and it didn’t go well.</p>
+    </div>
+
+    <!-- Section 2: Kavin's "Amazing" Skills -->
+    <div class="section">
+        <h2>Kavin’s “Amazing” Skills</h2>
+        <ul class="skills">
+            <li>Pro at clicking 'Next Episode' instead of doing homework.</li>
+            <li>World’s fastest eater… of snacks during class.</li>
+            <li>Flawless ability to sleep in any class except lunchtime.</li>
+            <li>Legendary at using "My dog ate my homework" for every subject.</li>
+        </ul>
+    </div>
+
+    <!-- Section 3: The Meme Zone -->
+    <div class="section meme">
+        <h2>The Meme Zone</h2>
+        <img src="https://via.placeholder.com/400x300" alt="Kavin Meme">
+        <p>Kavin when he says he'll wake up early, but it's already 3 PM.</p>
+    </div>
+
+</div>
+
+<footer>
+    <p>Made with ❤️ by Raghav, just for fun!</p>
+</footer>
+
+</body>
+</html>
